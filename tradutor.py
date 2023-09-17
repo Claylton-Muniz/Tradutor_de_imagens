@@ -1,25 +1,16 @@
 from PIL import Image
-from pyautogui import screenshot
 from pytesseract import image_to_string, pytesseract
 from keyboard import add_hotkey, wait
 
-def take_print():
-    printscreen = screenshot()
-    printscreen.save('print.png')
-    print('print tirado com sucesso')
-    imagem = Image.open('print.png')
-    pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
-    text = img_to_str(imagem)
-    print(text)
-    
+def img_to_str():
+    imagem = Image.open('page.jpg')
+    text = image_to_string(imagem)
+    print('\nTexto:\n\n' + text)
 
-def img_to_str(img):
-    return image_to_string(img)
-    
+  
+pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
 
-add_hotkey('ctrl+shift+s', take_print)
-print('Pressione Ctrl + Shift + S para traduzir a imagem')
-
-
+add_hotkey('ctrl+shift+a', img_to_str)
+print('Pressione Ctrl + Shift + A para traduzir a imagem')
 
 wait('esc')

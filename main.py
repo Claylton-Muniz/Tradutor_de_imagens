@@ -2,20 +2,26 @@ import cv2
 from pytesseract import image_to_string, pytesseract
 from keyboard import add_hotkey, wait
 
+def page_to_panels():
+    img = cv2.imread('page/page.jpg')
+    img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    
+    # dá um realce nas bordas para utilizar o método de Canny
+    edges = cv2.Canny(img_gray, threshold1=100, threshold2=200)
+    contours = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[0]
+
+
 def img_to_str():
-    imagem = cv2.imread('page/page.jpg')
-    imagem_cinza = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
-    bordas = cv2.Canny(imagem_cinza, threshold1=100, threshold2=200)
-    # cv2.imwrite('img_tests/test.jpg', bordas)
-    cv2.imshow('bordas', cv2.resize(bordas, (0, 0), fx=0.3, fy=0.2))
-    cv2.waitKey(0)
-    text = image_to_string(imagem)
+    img = cv2.imread('page/page.jpg')
+    text = image_to_string(img)
     print('\nTexto:\n\n' + text)
 
-  
+
+# define onde está o tesseract  
 pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
 
-add_hotkey('ctrl+shift+a', img_to_str)
+# cria atalho e diz o que ele deve fazer
+add_hotkey('ctrl+shift+a', page_to_panels)
 print('Pressione Ctrl + Shift + A para traduzir a imagem')
 
 wait('esc')

@@ -1,6 +1,6 @@
-# Tradutor_de_imagens
+# Tradutor de imagens
 
-# Instalações necessárias:
+## Instalações necessárias:
 
 1. PIL (Python Imaging Library):
 

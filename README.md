@@ -8,7 +8,7 @@
 pip install Pillow
 ```
 
-1. **PyTesseract:**
+2. **PyTesseract:**
 
 ```powershell
 pip install pytesseract
@@ -18,13 +18,13 @@ Instale também o Tessetact pelo link: [https://github.com/UB-Mannheim/tesseract
 
 - Instale da maneira padrão
 - Certifique-se que o arquivo se encontra na pasta: “C:\Program Files\Tesseract-OCR”
-1. PyAutoGui:
+3. PyAutoGui:
 
 ```powershell
 pip install pyautogui
 ```
 
-1. Keyboard:
+4. Keyboard:
 
 ```powershell
 pip install keyboard

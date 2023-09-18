@@ -4,11 +4,30 @@ from keyboard import add_hotkey, wait
 
 def page_to_panels():
     img = cv2.imread('page/page.jpg')
+    # cv2.imshow('Imagem 1', img)
+    
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    # cv2.imshow('Imagem 2', img_gray)
     
     # dá um realce nas bordas para utilizar o método de Canny
     edges = cv2.Canny(img_gray, threshold1=100, threshold2=200)
+    # cv2.imshow('Imagem 3', edges)
+    
     contours = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[0]
+    
+    with open('contours.txt', 'w') as text:
+        text.write(str(contours))
+        
+    area = cv2.contourArea(contours[0])
+    print(area)
+    
+    x, y, largura, altura = cv2.boundingRect(contours[0])
+    panel = img[y:y+altura, x:x+largura]
+    cv2.imwrite('panels/panel.jpg', panel)
+    
+    
+    
+    # cv2.waitKey(0)
 
 
 def img_to_str():

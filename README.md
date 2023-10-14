@@ -18,13 +18,8 @@ Instale também o Tessetact pelo link: [https://github.com/UB-Mannheim/tesseract
 
 - Instale da maneira padrão
 - Certifique-se que o arquivo se encontra na pasta: “C:\Program Files\Tesseract-OCR”
-3. PyAutoGui:
 
-```powershell
-pip install pyautogui
-```
-
-4. Keyboard:
+3. Keyboard:
 
 ```powershell
 pip install keyboard
